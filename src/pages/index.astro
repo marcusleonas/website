@@ -31,7 +31,7 @@ const shows = allShows.slice(0, 5);
     />
   </head>
   <body
-    class="dark:bg-stone-950 dark:text-white md:max-w-screen-md md:mx-auto mx-4"
+    class="dark:bg-stone-950 font-inter dark:text-white md:max-w-screen-md md:mx-auto mx-4"
   >
     <Navbar />
     <main class="w-full">
@@ -50,17 +50,20 @@ const shows = allShows.slice(0, 5);
               A Novice Lighting Design/Programmer & a Frontend Web Developer
             </p>
             <div class="md:flex md:flex-row grid grid-cols-2 mt-2 -ml-2">
-              <IconLink href="https://github.com/marcusleonas"
-                ><Icon name="mdi:github" />Github</IconLink
-              >
-              <IconLink href="https://twitter.com/flvffywvffy"
-                ><Icon name="mdi:twitter" />Twitter</IconLink
-              >
               <IconLink href="mailto:marcus@marcusleonasharvey.com"
                 ><Icon name="mdi:email" />Email</IconLink
               >
-              <IconLink href="/pgp.txt"
-                ><Icon name="mdi:lock" />PGP Key</IconLink
+              <IconLink href="https://github.com/marcusleonas"
+                ><Icon name="mdi:github" />Github</IconLink
+              >
+              <IconLink href="https://www.linkedin.com/in/marcusleonas/"
+                ><Icon name="mdi:linkedin" />LinkedIn</IconLink
+              >
+              <IconLink href="https://stageready.co.uk"
+                ><Icon name="mdi:web" />Stage Ready</IconLink
+              >
+              <IconLink href="https://twitter.com/flvffywvffy"
+                ><Icon name="mdi:twitter" />Twitter</IconLink
               >
             </div>
           </div>
@@ -71,7 +74,10 @@ const shows = allShows.slice(0, 5);
             {
               posts.map((post) => (
                 <li class="py-2 hover:bg-stone-300 dark:hover:bg-stone-800 px-2 rounded-md hover:cursor-pointer group">
-                  <a href={`/blog/${post.slug}/`}>
+                  <a
+                    href={`/blog/${post.slug}/`}
+                    data-astro-prefetch="viewport"
+                  >
                     <div class="flex flex-row gap-2">
                       <h3 class="font-semibold text-lg">{post.data.title}</h3>
                       <svg

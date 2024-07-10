@@ -8,4 +8,5 @@ import icon from "astro-icon";
 export default defineConfig({
   site: "https://marcusleonasharvey.co.uk",
   integrations: [mdx(), sitemap(), tailwind(), icon()],
+  prefetch: true,
 });

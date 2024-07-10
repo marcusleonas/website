@@ -4,6 +4,7 @@ import { SITE_DESCRIPTION } from "../../consts";
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
 
 const posts = (await getCollection("shows")).sort(
   (a, b) => b.data.showDate.valueOf() - a.data.showDate.valueOf()
@@ -16,7 +17,7 @@ const posts = (await getCollection("shows")).sort(
     <BaseHead title="Portfolio" description={SITE_DESCRIPTION} />
   </head>
   <body
-    class="dark:bg-stone-950 dark:text-white md:max-w-screen-md md:mx-auto mx-4"
+    class="dark:bg-stone-950 dark:text-white md:max-w-screen-md min-h-screen md:mx-auto mx-4"
   >
     <Navbar />
     <main>
@@ -48,6 +49,9 @@ const posts = (await getCollection("shows")).sort(
                       </>
                     </svg>
                   </div>
+                  <p class="truncate">
+                    Date: {post.data.showDate.toLocaleDateString("en-GB")}
+                  </p>
                   <p class="truncate">Director: {post.data.director}</p>
                   <p class="truncate">Company: {post.data.company}</p>
                   <div class="flex flex-row gap-1 pt-1">
@@ -63,6 +67,7 @@ const posts = (await getCollection("shows")).sort(
           }
         </ul>
       </section>
+      <Footer />
     </main>
   </body>
 </html>

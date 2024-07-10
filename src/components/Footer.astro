@@ -2,6 +2,14 @@
 
 ---
 
-<footer class="py-4 flex w-full items-center text-sm">
+<footer class="py-4 flex w-full items-center text-sm justify-between">
   <p>Copyright &copy; 2024 Marcus Leonas Harvey</p>
+  <p>
+    Last build: {
+      new Date().toLocaleString("en-GB", { timeZone: "Europe/London" })
+    } | <a
+      class="underline hover:text-neutral-400"
+      href="https://github.com/marcusleonas/website">Source Code</a
+    >
+  </p>
 </footer>
