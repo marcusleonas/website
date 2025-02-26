@@ -1,7 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { SITE_MENU } from "../consts";
 ---
 
 <Layout title="Home">
-  <h1 class="text-4xl">Marcus Leonas Harvey</h1>
+  <header>
+    <h1 class="text-4xl">Marcus Leonas Harvey</h1>
+    <nav class="flex flex-row">
+      {
+        SITE_MENU.map((item) => (
+          <a
+            href={item.href}
+            class="underline decoration-dotted underline-offset-2 duration-200 hover:decoration-solid hover:underline-offset-0"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </header>
 </Layout>
