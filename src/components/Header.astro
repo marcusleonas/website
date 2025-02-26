@@ -2,17 +2,23 @@
 import { SITE_MENU } from "../consts";
 ---
 
-<header>
+<header class="py-2 motion-preset-fade-lg motion-preset-slide-down-lg">
   <h1 class="text-4xl">Marcus Leonas Harvey</h1>
-  <nav class="flex flex-row gap-2">
+  <nav class="flex flex-row gap-2 items-center">
+    <p class="text-xs">cd{" "}</p>
     {
-      SITE_MENU.map((item) => (
-        <a
-          href={item.href}
-          class="underline decoration-dotted underline-offset-2 duration-200 hover:decoration-solid hover:underline-offset-0"
-        >
-          {item.label}
-        </a>
+      SITE_MENU.map((item, index) => (
+        <>
+          <a
+            href={item.href}
+            class="underline decoration-dotted underline-offset-2 duration-200 hover:text-purple-300"
+          >
+            {item.label}
+          </a>
+          {SITE_MENU[index] !== SITE_MENU[SITE_MENU.length - 1] && (
+            <p class="text-xs">|</p>
+          )}
+        </>
       ))
     }
   </nav>
