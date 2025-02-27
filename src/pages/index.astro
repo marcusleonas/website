@@ -1,6 +1,64 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import { SITE_MENU } from "../consts";
+import Link from "../components/Link.astro";
+
+const allShows = (await getCollection("shows"))
+  .sort((a, b) => {
+    return new Date(b.data.showDate) - new Date(a.data.showDate);
+  })
+  .slice(0, 5);
 ---
 
-<Layout title="Home" />
+<Layout title="Home">
+  <main class="">
+    <p>
+      Hello and welcome! My name Marcus, and I'm a passionate lighting
+      programmer and designer with a passion for creating impactful visual
+      experiences. I specialise in working with industry-standard tools such as
+      ETC EOS and QLab, which allows me to bring creative visions to life
+      through dynamic lighting and show control. On this website, you'll find a
+      comprehensive showcase of my past productions.
+    </p>
+
+    <h2 class="pt-4 text-xl font-semibold">Web Development</h2>
+    <p>
+      I also do a lot of web development as a hobby. My favourite stack is
+      typescript, nextjs, react, and tailwindcss. This website is also open
+      source and you can <Link
+        href="https://github.com/marcusleonas/website"
+        target="_blank">view it on github</Link
+      >.
+    </p>
+
+    <h2 class="pt-4 text-xl font-semibold">Current Work</h2>
+    <p>
+      I'm currently working at Stage Ready, a new production & theatrical
+      services company based in the south east.
+    </p>
+    <a href="https://stageready.co.uk" target="_blank"
+      ><img src="/stageready.gif" alt="Stage Ready Logo" /></a
+    >
+
+    <h2 class="pt-4 text-xl font-semibold">Latest Shows</h2>
+    <ul class="flex flex-col gap-2 pt-2">
+      {
+        allShows.map((show) => (
+          <li class="rounded bg-stone-800 px-2 py-1 duration-200 motion-duration-500 hover:motion-scale-in-105 hover:bg-lime-800">
+            <a
+              href={`/shows/${show.slug}`}
+              class="flex flex-col justify-between md:flex-row"
+              data-astro-prefetch="viewport"
+            >
+              <span>{show.data.title}</span>
+              <span>{show.data.company}</span>
+            </a>
+          </li>
+        ))
+      }
+      <li class="text-sm">
+        <Link href="/shows">View All Shows &gt;</Link>
+      </li>
+    </ul>
+  </main>
+</Layout>

@@ -2,10 +2,12 @@
 import "../styles/global.css";
 import { SITE_TITLE } from "../consts";
 
+import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.astro";
 
 interface Props {
   title: string;
+  anim?: boolean;
 }
 const { title } = Astro.props;
 ---
@@ -13,14 +15,19 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="en" class="bg-stone-900">
   <head>
+    <ClientRouter />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title} | {SITE_TITLE}</title>
   </head>
-  <body class="mx-auto my-4 max-w-[600px] font-serif text-white">
-    <Header  />
-    <slot />
+  <body class="mx-4 my-4 max-w-[600px] font-serif text-white md:mx-auto">
+    <Header />
+    <main
+      class={`motion-preset-slide-down motion-preset-fade motion-delay-400`}
+    >
+      <slot />
+    </main>
   </body>
 </html>

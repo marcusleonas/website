@@ -1,0 +1,25 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Link from "../../components/Link.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("shows");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"shows">;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title} anim={false}>
+  <h1 class="py-2 text-2xl font-semibold">{post.data.title}</h1>
+  <Link href="/shows">&lt; Back to Shows</Link>
+  <article class="prose prose-invert lg:prose-xl prose-p:text-base">
+    <Content />
+  </article>
+</Layout>

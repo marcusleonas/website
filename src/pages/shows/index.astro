@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+const allShows = (await getCollection("shows")).sort((a, b) => {
+  return new Date(b.data.showDate) - new Date(a.data.showDate);
+});
+---
+
+<Layout title="Shows">
+  <h1 class="text-2xl font-semibold">Past Shows</h1>
+
+  <ul class="flex flex-col gap-2 pt-2">
+    {
+      allShows.map((show) => (
+        <li class="rounded bg-stone-800 px-2 py-1 duration-200 motion-duration-500 hover:motion-scale-in-105 hover:bg-lime-800">
+          <a
+            href={`/shows/${show.slug}`}
+            class="flex flex-col justify-between md:flex-row"
+            data-astro-prefetch="viewport"
+          >
+            <span>{show.data.title}</span>
+            <span>{show.data.company}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

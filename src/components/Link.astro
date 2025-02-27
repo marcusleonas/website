@@ -1,0 +1,14 @@
+---
+interface Props {
+  href: string;
+  target?: astroHTML.JSX.HTMLAttributeAnchorTarget;
+}
+const { href, target = "_self" } = Astro.props;
+---
+
+<a
+  href={href}
+  target={target}
+  class="underline decoration-dotted underline-offset-2 duration-200 hover:motion-preset-oscillate-sm hover:text-lime-300"
+  ><slot /></a
+>
