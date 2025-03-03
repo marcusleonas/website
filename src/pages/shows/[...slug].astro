@@ -25,7 +25,9 @@ const { Content } = await post.render();
       {post.data.roles.join(", ").toString()}
     </div>
   </div>
-  <article class="prose pt-2 prose-invert lg:prose-xl prose-p:text-base">
+  <article
+    class="prose pt-2 prose-invert lg:prose-xl prose-p:text-base prose-a:duration-200 prose-a:hover:motion-preset-oscillate-sm prose-a:hover:text-lime-300"
+  >
     <Content />
   </article>
 </Layout>
