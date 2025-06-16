@@ -16,6 +16,7 @@ const allShows = (await getCollection("shows")).sort((a, b) => {
           <a
             class="flex flex-col justify-between md:flex-row"
             data-astro-prefetch="viewport"
+            href={`/shows/${show.data.slug}`}
           >
             <span>{show.data.title}</span>
             <span class="text-sm text-neutral-300">
