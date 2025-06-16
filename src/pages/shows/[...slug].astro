@@ -19,8 +19,17 @@ const { Content } = await post.render();
 <Layout title={post.data.title} anim={false}>
   <div class="py-2">
     <Link href="/shows">&lt; Back to Shows</Link>
-    <h1 class="text-2xl font-semibold">{post.data.title}</h1>
-    <div class="flex flex-col gap-0.5 md:flex-row">
+    <h1 class="pt-2 text-2xl font-semibold">{post.data.title}</h1>
+    <span class=""
+      >{
+        new Date(post.data.showDate).toLocaleDateString("en-GB", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })
+      } | {post.data.company}</span
+    >
+    <div class="flex flex-col gap-0.5 pt-2 md:flex-row">
       <p>Roles:</p>
       {post.data.roles.join(", ").toString()}
     </div>

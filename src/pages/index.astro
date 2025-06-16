@@ -51,7 +51,14 @@ const allShows = (await getCollection("shows"))
               data-astro-prefetch="viewport"
             >
               <span>{show.data.title}</span>
-              <span>{show.data.company}</span>
+              <span class="text-sm text-neutral-300">
+                {new Date(show.data.showDate).toLocaleDateString("en-GB", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}{" "}
+                | {show.data.company}
+              </span>
             </a>
           </li>
         ))

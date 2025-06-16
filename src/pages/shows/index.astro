@@ -14,12 +14,18 @@ const allShows = (await getCollection("shows")).sort((a, b) => {
       allShows.map((show) => (
         <li class="rounded bg-stone-800 px-2 py-1 duration-200 motion-duration-500 hover:motion-scale-in-105 hover:bg-lime-800">
           <a
-            href={`/shows/${show.slug}`}
             class="flex flex-col justify-between md:flex-row"
             data-astro-prefetch="viewport"
           >
             <span>{show.data.title}</span>
-            <span>{show.data.company}</span>
+            <span class="text-sm text-neutral-300">
+              {new Date(show.data.showDate).toLocaleDateString("en-GB", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}{" "}
+              | {show.data.company}
+            </span>
           </a>
         </li>
       ))
