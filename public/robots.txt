@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marcusleonasharvey.co.uk/sitemap-index.xml
